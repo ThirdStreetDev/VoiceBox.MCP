@@ -22,17 +22,28 @@ The Whisper model downloads automatically on first run (~142 MB). All processing
 
 ## Installation
 
-### Option 1: Installer (recommended)
-
-Download the latest release and run the installer:
+Clone and publish:
 
 ```bash
+git clone https://github.com/ThirdStreetDev/VoiceBox.MCP.git
+cd VoiceBox.MCP
+dotnet publish VoiceBox.MCP -c Release -o ./publish
+dotnet publish VoiceBox.Installer -c Release -o ./publish/installer
+copy ./publish/installer/VoiceBox.Installer.exe ./publish/
+```
+
+### Option 1: Installer (recommended)
+
+Run the installer from the publish folder:
+
+```bash
+cd publish
 VoiceBox.Installer.exe
 ```
 
 The installer will:
 - Detect your Claude Desktop installation
-- Copy VoiceBox to your local app data folder
+- Copy VoiceBox to `%LocalAppData%\VoiceBox`
 - Automatically update your `claude_desktop_config.json`
 - Back up your existing config before making changes
 
@@ -46,22 +57,13 @@ VoiceBox.Installer.exe --uninstall
 
 ### Option 2: Manual setup
 
-Clone and build:
-
-```bash
-git clone https://github.com/thirdstreetdev/voicebox-mcp.git
-cd voicebox-mcp
-dotnet build
-```
-
-Manually Add VoiceBox to your Claude Desktop config (`claude_desktop_config.json`):
+Copy the contents of the `publish` folder to `%LocalAppData%\VoiceBox`, then add the following to your Claude Desktop config (`claude_desktop_config.json`):
 
 ```json
 {
   "mcpServers": {
     "voicebox": {
-      "command": "dotnet",
-      "args": ["run", "--project", "/path/to/VoiceBox.MCP"]
+      "command": "C:\\Users\\<YourUsername>\\AppData\\Local\\VoiceBox\\VoiceBox.MCP.exe"
     }
   }
 }
@@ -121,6 +123,7 @@ VoiceBox/
 
 - [ ] Test and document external microphone compatibility
 - [ ] Speak tool — text-to-speech output for Claude Desktop responses
+- [ ] GitHub Releases with pre-built binaries (no clone/publish required)
 - [ ] Configurable Whisper model size (small, medium, large)
 - [ ] Multi-language support
 - [ ] Continuous listening mode
