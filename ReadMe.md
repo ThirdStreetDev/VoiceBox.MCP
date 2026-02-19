@@ -75,7 +75,7 @@ Restart Claude Desktop after saving.
 |---------|-------------|
 | `/listen` | Capture and transcribe speech |
 
-You can also say things like **"let me talk"**, **"voice mode"**, or **"use my mic"** and Claude will know to start listening.
+You can also type things like **"let me talk"**, **"voice mode"**, or **"use my mic"** and Claude will know to start listening.
 
 ### Tips
 
