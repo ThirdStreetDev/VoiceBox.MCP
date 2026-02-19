@@ -112,8 +112,15 @@ VoiceBox/
 - **[NAudio](https://github.com/naudio/NAudio)** — Microphone capture
 - **[Model Context Protocol (MCP)](https://modelcontextprotocol.io/)** — Tool interface for Claude
 
+## Known Limitations
+
+- **Built-in microphones** may produce inconsistent results or blank audio depending on hardware, noise cancellation settings, and environment. For best results, use a dedicated external microphone (USB or headset).
+- **Silence detection** can occasionally trigger early in noisy environments or if the mic gain is too low.
+
 ## Roadmap
 
+- [ ] Test and document external microphone compatibility
+- [ ] Speak tool — text-to-speech output for Claude Desktop responses
 - [ ] Configurable Whisper model size (small, medium, large)
 - [ ] Multi-language support
 - [ ] Continuous listening mode
